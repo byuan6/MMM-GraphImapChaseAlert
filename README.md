@@ -1,6 +1,10 @@
 # MMM-GraphImapChaseAlert
 Charts Chase balance alert emails on graph
 
+| Daily graph             |  w/ End of month projection |
+:-------------------------:|:-------------------------:
+![](https://github.com/studio-1b/MMM-GraphImapChaseAlert/latest-commit/main/docs/MMM-GraphImapChaseAlert%20projection%20Screenshot%20from%202024-02-25%2005-33-01.png)  |  ![](https://raw.githubusercontent.com/studio-1b/MMM-GraphImapChaseAlert/main/docs/MMM-GraphImapChaseAlert%20projection%20Screenshot%20from%202024-02-25%2005-33-01.png)
+
 
 # Installation
 ### Step 1: Git Clone and install dependencies(npm install)
