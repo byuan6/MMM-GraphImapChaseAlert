@@ -3,7 +3,7 @@ Charts Chase balance alert emails on graph
 
 | Daily graph             |  w/ End of month projection |
 :-------------------------:|:-------------------------:
-![](https://raw.githubusercontent.com/studio-1b/MMM-GraphImapChaseAlert/main/docs/MMM-GraphImapChaseAlert Screenshot from 2024-02-25 05-31-32.png)  |  ![](https://raw.githubusercontent.com/studio-1b/MMM-GraphImapChaseAlert/main/docs/MMM-GraphImapChaseAlert%20projection%20Screenshot%20from%202024-02-25%2005-33-01.png)
+![](https://raw.githubusercontent.com/studio-1b/MMM-GraphImapChaseAlert/main/docs/MMM-GraphImapChaseAlert+Screenshot+from+2024-02-25+05-31-32.png)  |  ![](https://raw.githubusercontent.com/studio-1b/MMM-GraphImapChaseAlert/main/docs/MMM-GraphImapChaseAlert%20projection%20Screenshot%20from%202024-02-25%2005-33-01.png)
 
 
 # Installation
