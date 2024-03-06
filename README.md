@@ -6,14 +6,35 @@ Charts Chase balance alert emails on graph
 ![](https://raw.githubusercontent.com/studio-1b/MMM-GraphImapChaseAlert/main/docs/MMM-GraphImapChaseAlert%20Screenshot%20from%202024-02-25%2005-31-32.png)  |  ![](https://raw.githubusercontent.com/studio-1b/MMM-GraphImapChaseAlert/main/docs/MMM-GraphImapChaseAlert%20projection%20Screenshot%20from%202024-02-25%2005-33-01.png)
 
 
+# Requirements
+
+* Chase Banking account (to send Daily Balance Alerts)
+* IMAP capable account (special instruction below, to enable IMAP for Gmail)
+* computer with [nodejs](https://nodejs.org/en/download/package-manager), and [MagicMirror](https://docs.magicmirror.builders/getting-started/installation.html) software
+
 # Installation
 ### Step 1: Git Clone and install dependencies(npm install)
+
+Below was tested on nodejs v18.17.1 on x86/x64 platform
+
 ```bash
     cd ~/MagicMirror/modules
     git clone https://github.com/studio-1b/MMM-GraphImapChaseAlert.git
     cd MMM-GraphImapChaseAlert
     npm install
 ```
+
+nodejs v10.16.0 on ARM platform
+You may want to use the branch below for ARM platform of nodejs.
+The above uses simpleparser npm package, but on ARM nodejs 10.16 doesnt have the buffer package, which the simpleparser requires,  So below, is a different version of sample Module, but recoded to not use simpleparser
+
+```bash
+    cd ~/MagicMirror/modules
+    git clone -b NoSimpleParser https://github.com/studio-1b/MMM-GraphImapChaseAlert.git
+    cd MMM-GraphImapChaseAlert
+    npm install
+```
+
 
 ### Step 2: Enable Daily Balance Alert e-mail in your Chase account
 
