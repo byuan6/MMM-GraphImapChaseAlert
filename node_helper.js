@@ -65,7 +65,7 @@ module.exports = NodeHelper.create({
 								all.entry.sort((a,b) => (a.issued > b.issued) ? 1 : ((b.issued > a.issued) ? -1 : 0) );
 								var dataset = self.toDataset(all.entry);
 								//dataset.sort((a,b) => (a.issued > b.issued) ? 1 : ((b.issued < a.issued) ? -1 : 0) );
-								console.log(dataset);
+								console.log(dataset.map((s)=>s.afterdate+", "+s.balance));
 								self.sendSocketNotification("MMM-GraphImapChaseAlert_JSON_RESULT", {username: config.username, data: dataset});		
 							});
 						});

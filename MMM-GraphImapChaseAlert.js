@@ -200,7 +200,7 @@ Module.register("MMM-GraphImapChaseAlert", {
 					});
 					console.log(y[y.length-1]);
 					console.log(projection.y[projection.y.length-1]); 
-					document.all.balancediv.innerHTML = "(Last)" + USDollar.format(y[y.length-1]) + "<br>(Est "+ lastday.getMonth() +"/"+ lastday.getDate() +")" + USDollar.format(Math.round(projection.y[projection.y.length-1]));
+					document.all.balancediv.innerHTML = "(Last)" + USDollar.format(y[y.length-1]) + "<br>(Est "+ (lastday.getMonth()+1) +"/"+ lastday.getDate() +")" + USDollar.format(Math.round(projection.y[projection.y.length-1]));
 					console.log(self.balance);
 					console.log(self.innerHTML);
 				}, 15000);
