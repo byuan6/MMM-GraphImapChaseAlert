@@ -105,9 +105,9 @@ Module.register("MMM-GraphImapChaseAlert", {
 
 			chart1.update();
 
-			console.log("last balance");
-			console.log(this.y1[this.y1.length-1]);
-			console.log(self.balance);
+			//console.log("last balance");
+			//console.log(this.y1[this.y1.length-1]);
+			//console.log(self.balance);
 			const USDollar = new Intl.NumberFormat('en-US', {
 				style: 'currency',
 				currency: 'USD',
@@ -124,11 +124,11 @@ Module.register("MMM-GraphImapChaseAlert", {
 					// get data in graph
 					const x = self.x1.map((s) => Date.parse(s));
 					const y = self.y1
-					console.log(x);
-					console.log(y);
+					//console.log(x);
+					//console.log(y);
 					// divide data in only deceasing segments
 					const sets = self.getDatasets(x,y);
-					console.log(sets);
+					//console.log(sets);
 					// create a model of rate of decrease
 					var model = null;
 					for(var i=0; i<sets.length; i++){
@@ -146,7 +146,7 @@ Module.register("MMM-GraphImapChaseAlert", {
 							model.minX=Math.min(model.minX,trial.minX);
 						}
 					}
-					console.log(model);
+					//console.log(model);
 					if(model.n < 4)
 						return; //abort bc projection needs adequate data
 					// average the models together
@@ -154,30 +154,30 @@ Module.register("MMM-GraphImapChaseAlert", {
 					model.b /= model.n;
 					model.n /= model.n;
 					model.maxX = Math.max(...x);
-					console.log(model);
+					//console.log(model);
 					
 					//create a projection of balance decline on each workday, until next month
 					const day_in_ms = 24*60*60*1000;
 					var lastday = new Date(Math.max(...x));
 					lastday.setMonth(lastday.getMonth()+1);
 					lastday.setDate(1);
-					console.log(model.b);
-					console.log(x[x.length-1]);
-					console.log("----");
-					console.log("projected at last point");
-					console.log((model.m*x[x.length-1]+model.b));
-					console.log("actual at last point");
-					console.log(y[y.length-1]);
-					console.log("differece, actual - projected");
+					//console.log(model.b);
+					//console.log(x[x.length-1]);
+					//console.log("----");
+					//console.log("projected at last point");
+					//console.log((model.m*x[x.length-1]+model.b));
+					//console.log("actual at last point");
+					//console.log(y[y.length-1]);
+					//console.log("differece, actual - projected");
 					const delta = y[y.length-1]- (model.m*x[x.length-1]+model.b)
-					console.log(delta);
+					//console.log(delta);
 					model.b += delta;
-					console.log("changed intercept");
-					console.log(model.b);
-					console.log("new projected at last point");
-					console.log((model.m*x[x.length-1]+model.b));
+					//console.log("changed intercept");
+					//console.log(model.b);
+					//console.log("new projected at last point");
+					//console.log((model.m*x[x.length-1]+model.b));
 					var projection = self.getProjection(model, lastday.getTime(), day_in_ms, (s)=>(new Date(s)).getDay()==0 || (new Date(s)).getDay()==6);
-					console.log(projection);
+					//console.log(projection);
 					
 					// add projection to chart, and update
 					const chart1 = window.chart1; //this.chart;
@@ -198,11 +198,11 @@ Module.register("MMM-GraphImapChaseAlert", {
 						style: 'currency',
 						currency: 'USD',
 					});
-					console.log(y[y.length-1]);
-					console.log(projection.y[projection.y.length-1]); 
-					document.all.balancediv.innerHTML = "(Last)" + USDollar.format(y[y.length-1]) + "<br>(Est "+ lastday.getMonth() +"/"+ lastday.getDate() +")" + USDollar.format(Math.round(projection.y[projection.y.length-1]));
-					console.log(self.balance);
-					console.log(self.innerHTML);
+					//console.log(y[y.length-1]);
+					//console.log(projection.y[projection.y.length-1]); 
+					document.all.balancediv.innerHTML = "(Last)" + USDollar.format(y[y.length-1]) + "<br>(Est "+ (lastday.getMonth()+1) +"/"+ lastday.getDate() +")" + USDollar.format(Math.round(projection.y[projection.y.length-1]));
+					//console.log(self.balance);
+					//console.log(self.innerHTML);
 				}, 15000);
 		}
 		if (notification === "MMM-GraphImapChaseAlert_JSON_ERROR") {
@@ -236,8 +236,8 @@ Module.register("MMM-GraphImapChaseAlert", {
 	getRegression: function(xArray,yArray) {
 		//const xArray = [50,60,70,80,90,100,110,120,130,140,150];
 		//const yArray = [7,8,8,9,9,9,10,11,14,14,15];
-		console.log(xArray);
-		console.log(yArray);
+		//console.log(xArray);
+		//console.log(yArray);
 
 		// Calculate Sums
 		let xSum=0, ySum=0 , xxSum=0, xySum=0;
@@ -277,8 +277,8 @@ Module.register("MMM-GraphImapChaseAlert", {
 		const intercept = equation.b;
 		// Generate values
 		var i = equation.maxX;
-		console.log(new Date(i+step));
-		console.log(new Date(extra));
+		//console.log(new Date(i+step));
+		//console.log(new Date(extra));
 
 		const xValues = [];
 		const yValues = [];
@@ -288,8 +288,8 @@ Module.register("MMM-GraphImapChaseAlert", {
 					continue;
 			xValues.push(x);
 			yValues.push(x * slope + intercept);
-			console.log(new Date(x));
-			console.log(x * slope + intercept);
+			//console.log(new Date(x));
+			//console.log(x * slope + intercept);
 		}
 
 		return {m: slope, b:intercept, x:xValues, y:yValues};
