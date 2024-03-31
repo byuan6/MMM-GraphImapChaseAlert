@@ -178,31 +178,34 @@ Module.register("MMM-GraphImapChaseAlert", {
 					console.log((model.m*x[x.length-1]+model.b));
 					var projection = self.getProjection(model, lastday.getTime(), day_in_ms, (s)=>(new Date(s)).getDay()==0 || (new Date(s)).getDay()==6);
 					console.log(projection);
-					
-					// add projection to chart, and update
-					const chart1 = window.chart1; //this.chart;
-					chart1.data.labels = self.x1.concat(projection.x.map((s) => (new Date(s)).toDateString()));
-					//chart1.data.x = data.map((s) => s.msgdate); //not documented, but added ad-hoc
-					//chart1.data.datasets[0].data = data.map((s) => s.balance);
-					//chart1.data.datasets[1].data = data.map((s) => s.withdrawal);
-					//chart1.data.datasets[2].data = data.map((s) => s.deposit);
-					chart1.data.datasets[2].data = self.y4.concat(projection.y);
+					if(projection.x.length>0) {
+						// add projection to chart, and update
+						const chart1 = window.chart1; //this.chart;
+						chart1.data.labels = self.x1.concat(projection.x.map((s) => (new Date(s)).toDateString()));
+						//chart1.data.x = data.map((s) => s.msgdate); //not documented, but added ad-hoc
+						//chart1.data.datasets[0].data = data.map((s) => s.balance);
+						//chart1.data.datasets[1].data = data.map((s) => s.withdrawal);
+						//chart1.data.datasets[2].data = data.map((s) => s.deposit);
+						chart1.data.datasets[2].data = self.y4.concat(projection.y);
 		
-					//const last = data.length-1;
-					//chart1.data.datasets[3].data[last] = chart1.data.datasets[0].data[last];
+						//const last = data.length-1;
+						//chart1.data.datasets[3].data[last] = chart1.data.datasets[0].data[last];
 		
-					chart1.update();
+						chart1.update();
 		
-					// create a 
-					const USDollar = new Intl.NumberFormat('en-US', {
-						style: 'currency',
-						currency: 'USD',
-					});
-					console.log(y[y.length-1]);
-					console.log(projection.y[projection.y.length-1]); 
-					document.all.balancediv.innerHTML = "(Last)" + USDollar.format(y[y.length-1]) + "<br>(Est "+ (lastday.getMonth()+1) +"/"+ lastday.getDate() +")" + USDollar.format(Math.round(projection.y[projection.y.length-1]));
-					console.log(self.balance);
-					console.log(self.innerHTML);
+						// create a 
+						const USDollar = new Intl.NumberFormat('en-US', {
+							style: 'currency',
+							currency: 'USD',
+						});
+						console.log(y[y.length-1]);
+						console.log(projection.y[projection.y.length-1]); 
+						document.all.balancediv.innerHTML = "(Last)" + USDollar.format(y[y.length-1]) + "<br>(Est "+ (lastday.getMonth()+1) +"/"+ lastday.getDate() +")" + USDollar.format(Math.round(projection.y[projection.y.length-1]));
+						console.log(self.balance);
+						//console.log(self.innerHTML);
+					} else {
+						document.all.balancediv.innerHTML = "(Last)" + USDollar.format(y[y.length-1]) + "<br>(End of Month)";
+					}
 				}, 15000);
 		}
 		if (notification === "MMM-GraphImapChaseAlert_JSON_ERROR") {
