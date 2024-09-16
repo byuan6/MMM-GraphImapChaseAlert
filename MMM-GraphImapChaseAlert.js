@@ -15,7 +15,7 @@ Module.register("MMM-GraphImapChaseAlert", {
 		// the string here are escaped twice, once to create string liternal, and then the string literal has to have escape sequnce to regex
 		extractDateRegEx: "Account summary for (.+, [JFMASOND][aepuc][nbrylgptvc] [1-3]*[0-9]+, 20[0-9][0-9])",
 		extractHeaderRegEx: "(Account ending in \\(\\.\\.\\.[0-9][0-9][0-9][0-9]\\))",
-		extractBalanceRegEx: "End of Day Balance \\$([,0-9]+.[0-9][0-9])",
+		extractBalanceRegEx: "End of Day Balance \\$(-?[,0-9]+.[0-9][0-9])",
 		extractDepositRegEx: "Total Deposits \\$([,0-9]+.[0-9][0-9])",
 		extractWithdrawalRegEx: "Total Withdrawals \\$([,0-9]+.[0-9][0-9])",
 
